@@ -27,7 +27,6 @@ class UserController extends Controller
             $token = $user->createToken('auth_token')->accessToken;
             return response()->json(['user' => $user, 'token' => $token], 200);
         }
-
         return response()->json(['error' => 'Unauthorized'], 401);
     }
     public function registersubmit(Request $request)
@@ -65,7 +64,7 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      */
-    public function userlogout(Request $request)
+    public function userlogout()
     {
         if (Auth::guard('api')->check()) {
             $accessToken = Auth::guard('api')->user()->token();
